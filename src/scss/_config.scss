@@ -1,0 +1,22 @@
+html{
+    font-size: 100%;  // control zoom level
+    box-sizing: border-box; // include padding in final width
+    font-family: 'Raleway', sans-serif;
+}
+
+*, *::before, *::after{
+    box-sizing: inherit;
+}
+
+a, a:visited, a:hover{
+    text-decoration: none;
+}
+
+body{
+    margin: 0;  
+}
+
+
+//fonts
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap');
+//font-family: 'Raleway', sans-serif;

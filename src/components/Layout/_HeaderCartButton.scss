@@ -1,0 +1,33 @@
+.cart-button{
+
+    border: none;
+    background-color: transparent;
+
+    position: relative;
+
+    &:hover{
+        cursor: pointer;
+        opacity: 0.5;
+    }
+    
+    &-items{
+        position: absolute;
+        top: -30%;
+        left: 60%;
+
+        background-color: $black;
+        color: $white;
+        min-width: 20px;
+        min-height: 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content:center;
+
+        border-radius: 50%;
+
+        font-size: 14px;
+        font-weight: 700;
+    }
+    
+}
