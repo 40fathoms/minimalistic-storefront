@@ -5,10 +5,9 @@ import ProductsItem from './ProductsItem'
 
 export default class ProductsList extends Component {
 
-
     render() {
 
-        const productsList = this.props.products[0].products
+        const productsList = this.props.products.products
 
         const productsItem = productsList.map(product => {
             return (

@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import Products from './data.js'
 
 import Header from './components/Layout/Header'
 import ProductsList from './components/Products/ProductsList.js';
+import ProductDescriptionId from './components/Description/ProductDescriptionId';
 
 class App extends Component {
 
-  constructor() { 
+  constructor() {
     super();
 
     this.state = {
@@ -33,14 +35,14 @@ class App extends Component {
 
   render = () => {
 
-
     //filters the products
+    //the [0] index removes the object from the array, making it easier to work with
     const filteredProducts = Products.filter(product => {
       return product.name === this.state.currentCategory
-    })
+    })[0]
 
     return (
-      <React.Fragment>
+      <Router>
 
         <Header
           currentCurrency={this.state.currentCurrency}
@@ -51,14 +53,28 @@ class App extends Component {
           handleCategories={this.handleCategories.bind(this)}
         />
 
-        <ProductsList
-          products={filteredProducts}
+        <Routes>
 
-          currentCurrency={this.state.currentCurrency}
-          currentCategory={this.state.currentCategory}
-        />
+          <Route path="/" element={
+            <ProductsList
+              products={filteredProducts}
+              currentCurrency={this.state.currentCurrency}
+              currentCategory={this.state.currentCategory}
+            />
+          }
+          />
 
-      </React.Fragment>
+          <Route path="/product/:id" element={ 
+            <ProductDescriptionId
+              products={filteredProducts}
+              currentCurrency={this.state.currentCurrency}
+            />
+          }
+          />
+
+        </Routes>
+
+      </Router>
     )
   }
 }

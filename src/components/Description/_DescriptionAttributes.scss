@@ -1,0 +1,85 @@
+.attributes {
+
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    h3 {
+        font-size: 1.125rem;
+        font-weight: 700;
+        font-family: 'Roboto Condensed', sans-serif;
+
+        @include breakpoint-down(medium){
+            text-align: center;
+        }
+    }
+
+    &-options {
+        margin: 0;
+        padding: 0;
+        position: relative;
+
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+
+        @include breakpoint-up(large){
+            justify-content: flex-start;
+        }
+    }
+
+    &-option {
+        position: relative;
+        width: 63px;
+        height: 45px;
+        border: 1px solid $black;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        cursor: pointer;
+
+        color: $black;
+        background-color: $white;
+
+        &>label {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            cursor: pointer;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: 400;
+            font-size: 1rem;
+        }
+
+        &>input[type="radio"] {
+            display: none;
+        }
+
+        &>input[type="radio"]:checked+label {
+            color: $white;
+            background-color: $black;
+        }
+
+        &.swatch {
+            &>input[type="radio"]:checked+label {
+                box-shadow: 0px 0px 3px 3px $green;
+                background-color: inherit;
+            }
+        }
+
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+}

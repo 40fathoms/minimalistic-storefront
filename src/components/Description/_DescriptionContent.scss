@@ -1,0 +1,103 @@
+.description-content {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 40px;
+
+    min-height: 511px;
+    max-width: 320px;
+
+    @include breakpoint-up(large) {
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .title {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        @include breakpoint-down(small) {
+            text-align: center;
+        }
+
+        h2 {
+            font-weight: 600;
+            font-size: 1.875rem;
+        }
+
+        h3 {
+            font-weight: 400;
+            font-size: 1.875rem;
+        }
+    }
+
+    .price {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        @include breakpoint-down(medium){
+            text-align: center;
+        }
+
+        h3 {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 700;
+        }
+
+        p {
+            font-family: 'Raleway', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+    }
+
+    .button {
+        width: 95%;
+        max-width: 292px;
+        padding: 15.5px 0;
+
+        border: none;
+        background-color: $green;
+
+        color: $white;
+        font-family: 'Raleway', sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+
+        &:hover{
+            opacity: 0.5;
+        }
+    }
+
+    .about {
+        font-family: 'Roboto', sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        text-align: start;
+
+        @include breakpoint-down(medium){
+            text-align: center;
+        }
+
+        h1,
+        h2,
+        h3,
+        p,
+        li {
+            margin: 0.5rem 0;
+        }
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+        margin: 0;
+    }
+}

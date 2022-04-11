@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from "react-router-dom"
 import { nanoid } from 'nanoid'
 
 import Logo from '../../assets/logo.svg'
@@ -32,14 +33,17 @@ export default class Header extends Component {
 
         const categoriesListRender = this.props.categoriesList.map(category => {
             return (
-                <option
-                    key={nanoid()}
-                    label={`${category.toUpperCase()}`}
-                    value={category}
-                    className={`${this.props.currentCategory === category ? "active":""}`}
-                    onClick={this.changeCategory.bind(this)}
-                >
-                </option>
+
+                <Link to={'/'} key={nanoid()}>
+                    <option                        
+                        label={`${category.toUpperCase()}`}
+                        value={category}
+                        className={`${this.props.currentCategory === category ? "active" : ""}`}
+                        onClick={this.changeCategory.bind(this)}
+                    >
+                    </option>
+                </Link>
+
             )
         })
 

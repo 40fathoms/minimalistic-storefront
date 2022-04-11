@@ -12,7 +12,7 @@ export default class HeaderCartButton extends Component {
         /*const numberOfCartItems = cartContext.items.reduce((curNumber, item)=>{
             return curNumber + item.amount
         }, 0)*/
-        const numberOfCartItems = 2
+        const numberOfCartItems = 0
 
 
         return (

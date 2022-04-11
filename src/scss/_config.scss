@@ -1,3 +1,13 @@
+//fonts
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap');
+//font-family: 'Raleway', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+//font-family: 'Source Sans Pro', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+//font-family: 'Roboto', sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
+//font-family: 'Roboto Condensed', sans-serif;
+
 html{
     font-size: 100%;  // control zoom level
     box-sizing: border-box; // include padding in final width
@@ -15,8 +25,3 @@ a, a:visited, a:hover{
 body{
     margin: 0;  
 }
-
-
-//fonts
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&display=swap');
-//font-family: 'Raleway', sans-serif;
