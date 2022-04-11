@@ -2,17 +2,20 @@ import React, { Component } from 'react'
 
 import CartIcon from '../../assets/cart.svg'
 
+import CartContext from '../../store/CartContext'
+
 export default class HeaderCartButton extends Component {
 
-
+    static contextType = CartContext
 
 
     render() {
+        
+        console.log(this.context.items)
 
-        /*const numberOfCartItems = cartContext.items.reduce((curNumber, item)=>{
+        const numberOfCartItems = this.context.items.reduce((curNumber, item)=>{
             return curNumber + item.amount
-        }, 0)*/
-        const numberOfCartItems = 0
+        }, 0)
 
 
         return (

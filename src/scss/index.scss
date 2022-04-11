@@ -2,6 +2,10 @@
 @import "mixins";
 @import "config";
 
+//Cart
+@import "../components/Cart/Cart";
+@import "../components/Cart/CartItem";
+
 //Description
 @import "../components/Description/ProductDescription";
 @import "../components/Description/DescriptionGallery";

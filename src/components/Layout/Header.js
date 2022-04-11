@@ -30,12 +30,12 @@ export default class Header extends Component {
     }
 
     render() {
-
+        console.log(this.context)
         const categoriesListRender = this.props.categoriesList.map(category => {
             return (
 
                 <Link to={'/'} key={nanoid()}>
-                    <option                        
+                    <option
                         label={`${category.toUpperCase()}`}
                         value={category}
                         className={`${this.props.currentCategory === category ? "active" : ""}`}
@@ -62,7 +62,10 @@ export default class Header extends Component {
                         handleCurrency={this.props.handleCurrency.bind(this)}
                     />
 
-                    <HeaderCartButton />
+                    <Link to={'/cart'}>
+                        <HeaderCartButton />
+                    </Link>
+
                 </div>
 
                 <HeaderHamburger

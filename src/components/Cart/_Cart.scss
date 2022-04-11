@@ -1,0 +1,26 @@
+.cart {
+    padding: 5%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+
+    padding-bottom: 3rem;
+
+    @include breakpoint-up(large) {
+        align-items: flex-start;
+        padding: 90px 100px;
+        gap: 100px;
+    }
+
+    &-title {
+        font-weight: 700;
+        font-size: 2rem;
+    }
+
+    &-items {
+        width: 100%;
+    }
+}

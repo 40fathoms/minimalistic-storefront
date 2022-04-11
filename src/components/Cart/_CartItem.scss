@@ -1,0 +1,161 @@
+.cart-item {
+
+    h3 {
+        margin: 0;
+    }
+
+    width: 100%;
+    padding: 21px 0;
+    max-width: 1197px;
+    border-top: solid 1px $light-silver;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 50px;
+
+    @include breakpoint-up(large){
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    &-content {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;        
+
+        @include breakpoint-up(large){
+            margin-right: auto;
+            align-items: flex-start;
+        }
+
+        &-brand {
+            font-size: 1.875rem;
+            font-weight: 600;
+        }
+
+        &-name {
+            font-size: 1.875rem;
+            font-weight: 400;
+        }
+
+        &-price {
+            font-size: 1.875rem;
+            font-weight: 700;
+        }
+
+        &-attributes{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            
+            @include breakpoint-up(large){
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+        }
+
+        &-attribute {
+
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: flex-start;
+
+
+            h3 {
+                font-size: 1.5rem;
+                font-weight: 500;
+            }
+
+            span {
+                width: 63px;
+                height: 45px;
+                border: 1px solid $black;
+
+                cursor: pointer;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                font-family: 'Source Sans Pro', sans-serif;
+                font-weight: 400;
+                font-size: 1rem;
+            }
+        }
+    }
+
+    &-action {
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content:space-evenly;
+
+        height: auto;
+
+        @include breakpoint-up(large){
+            flex-direction: column;
+            justify-content:space-between;
+        }
+
+        button {
+
+            position: relative;
+            border: 1px solid $black;
+            background-color: transparent;
+            width: 45px;
+            height: 45px;
+
+            cursor: pointer;
+
+            color: $black;
+            font-size: 1.875rem;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                opacity: 0.5;
+            }
+
+            span {
+                position: absolute;
+                width: 15px;
+                height: 1px;
+                background: $black;
+
+                &.add-cart-item-rotate {
+                    transform: rotate(90deg);
+                }
+            }           
+        }
+
+        &-amount {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+    }
+
+    &-gallery{
+        width: auto;
+        max-width: 170px;
+        height: auto;
+
+        display: flex;
+        align-self: center;
+        justify-self: center;
+
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}

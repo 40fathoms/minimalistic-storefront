@@ -6,6 +6,8 @@ import Products from './data.js'
 import Header from './components/Layout/Header'
 import ProductsList from './components/Products/ProductsList.js';
 import ProductDescriptionId from './components/Description/ProductDescriptionId';
+import CartProvider from './store/CartProvider.js';
+import Cart from './components/Cart/Cart.js';
 
 class App extends Component {
 
@@ -43,37 +45,46 @@ class App extends Component {
 
     return (
       <Router>
+        <CartProvider>
 
-        <Header
-          currentCurrency={this.state.currentCurrency}
-          handleCurrency={this.handleCurrency.bind(this)}
+          <Header
+            currentCurrency={this.state.currentCurrency}
+            handleCurrency={this.handleCurrency.bind(this)}
 
-          categoriesList={Products.map(item => item.name)}
-          currentCategory={this.state.currentCategory}
-          handleCategories={this.handleCategories.bind(this)}
-        />
-
-        <Routes>
-
-          <Route path="/" element={
-            <ProductsList
-              products={filteredProducts}
-              currentCurrency={this.state.currentCurrency}
-              currentCategory={this.state.currentCategory}
-            />
-          }
+            categoriesList={Products.map(item => item.name)}
+            currentCategory={this.state.currentCategory}
+            handleCategories={this.handleCategories.bind(this)}
           />
 
-          <Route path="/product/:id" element={ 
-            <ProductDescriptionId
-              products={filteredProducts}
-              currentCurrency={this.state.currentCurrency}
+          <Routes>
+
+            <Route path="/" element={
+              <ProductsList
+                products={filteredProducts}
+                currentCurrency={this.state.currentCurrency}
+                currentCategory={this.state.currentCategory}
+              />
+            }
             />
-          }
-          />
 
-        </Routes>
+            <Route path="/product/:id" element={
+              <ProductDescriptionId
+                products={filteredProducts}
+                currentCurrency={this.state.currentCurrency}
+              />
+            }
+            />
 
+            <Route path="/cart" element={
+              <Cart
+                currentCurrency={this.state.currentCurrency}
+              />
+            }
+            />
+
+          </Routes>
+
+        </CartProvider>
       </Router>
     )
   }

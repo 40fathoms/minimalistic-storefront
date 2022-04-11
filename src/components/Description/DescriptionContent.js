@@ -3,23 +3,37 @@ import { nanoid } from 'nanoid'
 
 import DescriptionAttributes from './DescriptionAttributes'
 
+import CartContext from '../../store/CartContext'
+
 export default class DescriptionContent extends Component {
 
-    constructor() {
-        super()
+    static contextType = CartContext
 
-        this.state = {
-            attributes: {}
-        }
-    }
-
-    handleSubmitCart(e, attributes){
+    // handles the item added to the cart
+    handleSubmitCart(e, currentItem, chosenAttributes) {
         e.preventDefault()
-        console.log(attributes)
+
+        //checks if the user selected all attributes
+        if (this.props.currentItem.attributes.length !== Object.keys(chosenAttributes).length) {
+            return alert("Please select all attributes before ordering.")
+        }
+
+        const cartItem = {
+            id: nanoid(),
+            brand: currentItem.brand,
+            name: currentItem.name,
+            gallery: currentItem.gallery,
+            prices: currentItem.prices,
+            attributes: chosenAttributes,
+            amount: 1
+        }
+
+        // Adds the item to the cart
+        this.context.addItem(cartItem)
     }
 
     render() {
-
+        
         const item = this.props.currentItem
 
         // displays the product price according to the selected currency
@@ -28,13 +42,22 @@ export default class DescriptionContent extends Component {
         })[0]
 
         // handles the selected attributes
-        let currentAttributes = {}
+        let chosenAttributes = {}
         const handleAttribute = (name, type, value, label, id) => {
-            currentAttributes = { ...currentAttributes, [name]: { type: type, name: name, value: value, label: label, id: id } }
+            chosenAttributes = { ...chosenAttributes, [name]: { type: type, name: name, value: value, label: label, id: id } }
         }
 
         return (
-            <form className="description-content" onSubmit={(e) => {this.handleSubmitCart(e, currentAttributes)}}>
+            <form
+                className="description-content"
+                onSubmit={(e) => {
+                    this.handleSubmitCart(
+                        e,
+                        item,
+                        chosenAttributes
+                    )
+                }}
+            >
 
                 <div className="title">
                     <h2>{item.brand}</h2>
@@ -56,7 +79,9 @@ export default class DescriptionContent extends Component {
                     <p>{currentItemPrice.currency.symbol} {currentItemPrice.amount}</p>
                 </div>
 
-                <button className="button">ADD TO CART</button>
+                <button
+                    className="button"
+                >ADD TO CART</button>
 
                 <div className="about" dangerouslySetInnerHTML={{ __html: item.description }} />
 
