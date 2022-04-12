@@ -9,28 +9,13 @@ import HeaderHamburger from './HeaderHamburger'
 
 export default class Header extends Component {
 
-    constructor() {
-        super()
-
-        this.state = {
-            mobileMenuVisible: false
-        }
-    }
-
-    // handles the mobile menu visibility
-    handleMobileMenu = () => {
-        this.setState(curState => {
-            return { mobileMenuVisible: !curState.mobileMenuVisible }
-        })
-    }
-
     // Updates the new category
     changeCategory = (e) => {
         this.props.handleCategories(e.target.value)
     }
 
     render() {
-        console.log(this.context)
+        
         const categoriesListRender = this.props.categoriesList.map(category => {
             return (
 
@@ -62,15 +47,15 @@ export default class Header extends Component {
                         handleCurrency={this.props.handleCurrency.bind(this)}
                     />
 
-                    <Link to={'/cart'}>
-                        <HeaderCartButton />
-                    </Link>
+                    <HeaderCartButton
+                        handleCart={this.props.handleCart.bind(this)}
+                    />
 
                 </div>
 
                 <HeaderHamburger
-                    mobileMenuVisible={this.state.mobileMenuVisible}
-                    handleMobileMenu={this.handleMobileMenu.bind(this)}
+                    mobileMenuIsShown={this.props.mobileMenuIsShown}
+                    handleMobile={this.props.handleMobile.bind(this)}
                 />
 
             </header>

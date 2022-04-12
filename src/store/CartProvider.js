@@ -71,7 +71,6 @@ const CartReducer = (state, action) => {
         )
 
         const existingCartItem = state.items[existingCartItemIndex]
-        const updatedTotalAmount = state.totalAmount - existingCartItem.price
 
         let updatedItems
 
@@ -85,7 +84,7 @@ const CartReducer = (state, action) => {
             updatedItems[existingCartItemIndex] = updatedItem
         }
 
-        return { items: updatedItems, totalAmount: updatedTotalAmount }
+        return { items: updatedItems }
     }
 
     return defaultCartState
@@ -111,7 +110,6 @@ const CartProvider = props => {
 
     const cartContext = {
         items: cartState.items,
-        totalAmount: cartState.totalAmount,
         addItem: addItemToCartHandler,
         removeItem: removeItemFromCartHandler
     }

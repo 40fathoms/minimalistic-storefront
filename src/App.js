@@ -8,6 +8,8 @@ import ProductsList from './components/Products/ProductsList.js';
 import ProductDescriptionId from './components/Description/ProductDescriptionId';
 import CartProvider from './store/CartProvider.js';
 import Cart from './components/Cart/Cart.js';
+import CartOverlay from './components/UI/CartOverlay.js';
+import MobileOverlay from './components/UI/MobileOverlay.js';
 
 class App extends Component {
 
@@ -16,7 +18,9 @@ class App extends Component {
 
     this.state = {
       currentCurrency: "$",
-      currentCategory: "all"
+      currentCategory: "all",
+      cartIsShown: false,
+      mobileMenuIsShown: false
     }
   }
 
@@ -34,6 +38,20 @@ class App extends Component {
     })
   }
 
+  // Handles the visibility of the cart overlay
+  handleCart() {
+    this.setState(prevState => {
+      return { cartIsShown: !prevState.cartIsShown }
+    })
+  }
+
+  // Handles the visibility of the mobile menu overlay
+  handleMobileMenu() {
+    this.setState(prevState => {
+      return { mobileMenuIsShown: !prevState.mobileMenuIsShown }
+    })
+  }
+
 
   render = () => {
 
@@ -47,6 +65,28 @@ class App extends Component {
       <Router>
         <CartProvider>
 
+          {this.state.cartIsShown &&
+            <CartOverlay
+              handleModal={this.handleCart.bind(this)}
+              currentCurrency={this.state.currentCurrency}
+
+              handleCart={this.handleCart.bind(this)}
+            />
+          }
+
+          {this.state.mobileMenuIsShown &&
+            <MobileOverlay
+              handleModal={this.handleMobileMenu.bind(this)}
+
+              handleCurrency={this.handleCurrency.bind(this)}
+              currentCurrency={this.state.currentCurrency}
+              handleMobileMenu={this.handleMobileMenu.bind(this)}
+
+              categoriesList={Products.map(item => item.name)}
+              handleCategories={this.handleCategories.bind(this)}
+            />
+          }
+
           <Header
             currentCurrency={this.state.currentCurrency}
             handleCurrency={this.handleCurrency.bind(this)}
@@ -54,6 +94,10 @@ class App extends Component {
             categoriesList={Products.map(item => item.name)}
             currentCategory={this.state.currentCategory}
             handleCategories={this.handleCategories.bind(this)}
+
+            handleCart={this.handleCart.bind(this)}
+            handleMobile={this.handleMobileMenu.bind(this)}
+            mobileMenuIsShown={this.state.mobileMenuIsShown}
           />
 
           <Routes>

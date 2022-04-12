@@ -10,8 +10,6 @@ export default class HeaderCartButton extends Component {
 
 
     render() {
-        
-        console.log(this.context.items)
 
         const numberOfCartItems = this.context.items.reduce((curNumber, item)=>{
             return curNumber + item.amount
@@ -19,7 +17,7 @@ export default class HeaderCartButton extends Component {
 
 
         return (
-            <button className="cart-button">
+            <button className="cart-button" onClick={this.props.handleCart.bind(this)}>
 
                 <img src={CartIcon} alt="cart icon" />
 

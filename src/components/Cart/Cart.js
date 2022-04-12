@@ -11,8 +11,6 @@ export default class Cart extends Component {
 
     render() {
 
-        console.log(this.context.items)
-
         return (
             <section className="cart">
 
@@ -26,6 +24,7 @@ export default class Cart extends Component {
                             <CartItem
                                 key={nanoid()}
                                 item={{ ...item }}
+                                overlay={false}
                                 currentCurrency={this.props.currentCurrency}
                             />
                         )

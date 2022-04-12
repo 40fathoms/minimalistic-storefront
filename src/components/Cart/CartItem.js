@@ -27,10 +27,8 @@ export default class CartItem extends Component {
             return price.currency.symbol === this.props.currentCurrency
         })[0]
 
-        console.log(this.props.item)
-
         return (
-            <div className="cart-item">
+            <div className={`cart-item ${this.props.overlay?'overlay':''}`}>
 
                 <div className="cart-item-content">
 
