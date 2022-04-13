@@ -38,10 +38,14 @@ export default class HeaderCurrency extends Component {
 
     // hides the currency menu when the user clicks outside of it
     handleClickOutside(event) {
-        if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
-            this.setState(curState => {
-                return { currencyMenuIsVisible: !curState.currencyMenuIsVisible }
-            })
+        if (this.state.currencyMenuIsVisible) {
+
+            if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
+                this.setState(curState => {
+                    return { currencyMenuIsVisible: !curState.currencyMenuIsVisible }
+                })
+            }
+
         }
     }
 
@@ -85,7 +89,8 @@ export default class HeaderCurrency extends Component {
 
                 {this.state.currencyMenuIsVisible &&
                     <nav
-                    ref={this.wrapperRef}>
+                        ref={this.wrapperRef}
+                    >
                         {currenciesListRender}
                     </nav>
                 }

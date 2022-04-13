@@ -53,7 +53,7 @@ class App extends Component {
   // If the backup database is used, an alert will be displayed
   componentWillMount() {
     if(!this.props.graphqlData){
-      alert(`The current database is a hard coded backup. To use the graphQL endpoint, follow the instructions on this website's repository: https://github.com/40fathoms/joao-paulo-martins-react-test`)
+      alert(`The current database is a hard coded backup. To use the graphQL endpoint, follow the instructions on this website's repository: https://github.com/40fathoms/joao-paulo-martins-react-test. \n\nIf the graphQL endpoint is launched and you're still seeing this message, disabling adblockers will solve the issue.`)
     }    
   }
 
