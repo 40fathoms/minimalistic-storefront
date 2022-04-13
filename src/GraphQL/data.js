@@ -1,4 +1,5 @@
-export default [
+export default {
+  "categories": [
     {
       "name": "all",
       "products": [
@@ -1351,3 +1352,4 @@ export default [
       ]
     }
   ]
+}

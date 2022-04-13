@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
-import Products from './data.js'
-
 import Header from './components/Layout/Header'
 import ProductsList from './components/Products/ProductsList.js';
 import ProductDescriptionId from './components/Description/ProductDescriptionId';
@@ -52,8 +50,17 @@ class App extends Component {
     })
   }
 
+  // If the backup database is used, an alert will be displayed
+  componentWillMount() {
+    if(!this.props.graphqlData){
+      alert(`The current database is a hard coded backup. To use the graphQL endpoint, follow the instructions on this website's repository: https://github.com/40fathoms/joao-paulo-martins-react-test`)
+    }    
+  }
 
   render = () => {
+
+    // data fetched from the graphQL endpoint or from the backup hard coded database
+    const Products = this.props.data
 
     //filters the products
     //the [0] index removes the object from the array, making it easier to work with
