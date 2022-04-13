@@ -20,7 +20,7 @@
         gap: 10px;
 
         @include breakpoint-down(small) {
-            text-align: center;
+            align-items: center;
         }
 
         h2 {

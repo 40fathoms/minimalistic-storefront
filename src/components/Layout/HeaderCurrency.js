@@ -11,6 +11,9 @@ export default class HeaderCurrency extends Component {
         this.state = {
             currencyMenuIsVisible: false
         }
+
+        this.wrapperRef = React.createRef();
+        this.handleClickOutside = this.handleClickOutside.bind(this);
     }
 
     // Updates the new currency
@@ -24,7 +27,23 @@ export default class HeaderCurrency extends Component {
             return { currencyMenuIsVisible: !curState.currencyMenuIsVisible }
         })
     }
-    
+
+    componentDidMount() {
+        document.addEventListener("mousedown", this.handleClickOutside);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener("mousedown", this.handleClickOutside);
+    }
+
+    // hides the currency menu when the user clicks outside of it
+    handleClickOutside(event) {
+        if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
+            this.setState(curState => {
+                return { currencyMenuIsVisible: !curState.currencyMenuIsVisible }
+            })
+        }
+    }
 
     render() {
 
@@ -65,7 +84,8 @@ export default class HeaderCurrency extends Component {
                 </button>
 
                 {this.state.currencyMenuIsVisible &&
-                    <nav>
+                    <nav
+                    ref={this.wrapperRef}>
                         {currenciesListRender}
                     </nav>
                 }

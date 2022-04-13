@@ -14,6 +14,13 @@ export default class MobileOverlay extends Component {
         this.props.handleCategories(e.target.value)
     }
 
+    componentWillMount() {
+        document.body.style.overflow = "hidden";
+    }
+
+    componentWillUnmount() {
+        document.body.style.overflow = "auto";
+    }
 
     render() {
 

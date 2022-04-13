@@ -19,10 +19,6 @@ const AppQuery = (props) => {
         USED_DATA = Products
         graphqlData = false
     }
-    else{
-        USED_DATA = data
-        graphqlData = true
-    }
 
     return ( 
 
